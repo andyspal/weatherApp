@@ -1,0 +1,45 @@
+html{
+    font-size: 20px;
+}
+body{
+    background-color: #749BC2;
+    font-family: sans-serif;
+    color: #F6F4EB;
+}
+header{
+    padding: 1.5rem 2rem 0rem 0rem;
+    display: flex;
+    flex-direction: row-reverse;
+}
+input{
+    border: none;
+    width: 15rem;
+    height: 1.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+input, input-placeholder{
+    font-size: 0.8rem;
+}
+main{
+    padding: 1.5rem 8rem;
+}
+.weatherContainer{
+    display: flex;
+    padding: 0.5rem;
+    gap: 1rem;
+}
+
+.weatherIcon{
+    width: 6rem;
+    height: auto;
+}
+.city{
+    font-size: 1.8rem;
+  
+}
+.temperature{
+    font-size: 1.2rem;
+    text-align: center;
+}
