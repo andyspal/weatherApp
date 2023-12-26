@@ -7,21 +7,42 @@ body{
     color: #F6F4EB;
 }
 header{
-    padding: 1.5rem 2rem 0rem 0rem;
+    padding: 2rem;
     display: flex;
     flex-direction: row-reverse;
 }
+
+form{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
 input{
     border: none;
     width: 15rem;
-    height: 1.5rem;
-    padding: 0.25rem 0.5rem;
+    height: 2rem;
+    padding: 0.25rem 1rem;
     border-radius: 0.5rem;
 }
 
 input, input-placeholder{
     font-size: 0.8rem;
 }
+button{
+    background-color: transparent;
+    border: none;
+
+    display: flex;
+}
+button:hover{
+    cursor: pointer;
+}
+
+button img{
+    width: 2rem;
+}
+
 main{
     padding: 1.5rem 8rem;
 }

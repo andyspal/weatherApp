@@ -1,3 +1,5 @@
+import searchIcon from './svgs/searchIcon.svg'
+
 export default function ui() {
 
     // Header
@@ -12,9 +14,12 @@ export default function ui() {
 
     const button = document.createElement('button');
     button.setAttribute('type', 'submit');
-    button.textContent = 'Search';
-
-    form.append(input, button);
+    const icon = new Image();
+    icon.src = searchIcon;
+    icon.setAttribute('class','search-icon');
+    icon.setAttribute('alt','searchIcon')
+    button.appendChild(icon);
+    form.append(button, input);
     header.appendChild(form);
 
     // Main
