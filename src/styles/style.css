@@ -44,23 +44,23 @@ button img{
 }
 
 main{
-    padding: 1.5rem 8rem;
-}
-.weatherContainer{
-    display: flex;
-    padding: 0.5rem;
-    gap: 1rem;
+    padding-left: 8rem;
 }
 
-.weatherIcon{
-    width: 6rem;
+.weather-container{
+    width: 10rem;
     height: auto;
+    background-color: #F6F4EB;
+    border-radius: 1rem;
+    padding: 1rem;
+    display: none;
 }
-.city{
-    font-size: 1.8rem;
-  
-}
-.temperature{
-    font-size: 1.2rem;
-    text-align: center;
+
+.weather-info{
+    color: #749BC2;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    justify-content: center;
+    align-items: center;
 }

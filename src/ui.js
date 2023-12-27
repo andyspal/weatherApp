@@ -31,19 +31,16 @@ export default function ui() {
     const weatherInfo = document.createElement('div');
     weatherInfo.setAttribute('class', 'weather-info');
 
-    const city = document.createElement('h2');
-    city.setAttribute('class', 'city');
+    const name = document.createElement('h2');
+    name.setAttribute('class', 'name');
 
     const temperature = document.createElement('p');
     temperature.setAttribute('class', 'temperature');
 
-    const humidity = document.createElement('p');
-    humidity.setAttribute('class', 'humidity');
+    const conditions = document.createElement('p');
+    conditions.setAttribute('class', 'conditions');
 
-    const sky = document.createElement('p');
-    sky.setAttribute('class', 'sky');
-
-    weatherInfo.append(city, temperature, humidity, sky);
+    weatherInfo.append(name, temperature, conditions);
     weatherContainer.appendChild(weatherInfo);
     main.appendChild(weatherContainer);
 
