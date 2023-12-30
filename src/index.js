@@ -1,7 +1,7 @@
 import  ui  from './ui';
 import './styles/normalize.css'
 import './styles/style.css';
-import { getWeatherData, displayWeatherData } from './weather';
+import {getData} from './weather';
 
  ui();
 
@@ -9,13 +9,10 @@ import { getWeatherData, displayWeatherData } from './weather';
 
  cityForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-  
     const city = cityForm.elements[1].value;
-    const weatherContainer = document.querySelector(".weather-container");
-    weatherContainer.style.display = "none";
-    const {name, temperature, conditions} = await getWeatherData(city);
-
-    displayWeatherData(name,temperature,conditions);
+    const {name, temperature, mainDescription, description, tempMin, tempMax, humidity, timeCode} = await getData(city);
+    
+  
 
     event.target.reset();
   });

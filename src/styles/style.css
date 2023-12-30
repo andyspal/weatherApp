@@ -7,60 +7,44 @@ body{
     color: #F6F4EB;
 }
 header{
-    padding: 2rem;
     display: flex;
-    flex-direction: row-reverse;
+    justify-content: end;
+    padding: 1rem;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
 }
 
 form{
     display: flex;
     align-items: center;
-    gap: .5rem;
+    justify-items: center;
+
 }
 
-input{
-    border: none;
-    width: 15rem;
-    height: 2rem;
-    padding: 0.25rem 1rem;
-    border-radius: 0.5rem;
-}
-
-input, input-placeholder{
-    font-size: 0.8rem;
-}
 button{
+    display: flex;
     background-color: transparent;
     border: none;
-
-    display: flex;
-}
-button:hover{
     cursor: pointer;
 }
-
 button img{
     width: 2rem;
 }
 
-main{
-    padding-left: 8rem;
-}
-
-.weather-container{
-    width: 10rem;
-    height: auto;
-    background-color: #F6F4EB;
+input {
+    height: 1rem;
+    width: 14rem;
+    border: none;
+    padding: .6rem;
     border-radius: 1rem;
-    padding: 1rem;
-    display: none;
 }
 
-.weather-info{
-    color: #749BC2;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    justify-content: center;
-    align-items: center;
+.error-message{
+    color: red;
+    font-size: .9rem;
+    text-align: center;
+    padding: .5rem;
 }
+
