@@ -29,10 +29,14 @@ cityForm.addEventListener('submit', async (event) => {
   }
   document.querySelector('button img').style.display = 'flex';
   document.querySelector('button').classList.remove('loader');
+  input.style.display = 'flex';
   event.target.reset();
 });
 
 const input = document.querySelector('input');
+input.style.display = 'none';
 input.value = "Cordoba";
+
 const submitButton = document.querySelector('button');
 submitButton.click();
+

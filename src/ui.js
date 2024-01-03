@@ -34,8 +34,14 @@ export function ui() {
     weatherContainer.setAttribute('class', 'weather-container');
     main.appendChild(weatherContainer);
 
+    const footer = document.createElement('footer');
+    const anchor = document.createElement('a');
+    anchor.setAttribute('href', 'https://github.com/andyspal');
+    anchor.textContent = '@andyspal'
+    footer.appendChild(anchor);
+
     // Append elements to Body
-    document.body.append(header,main);
+    document.body.append(header,main,footer);
 
     
     
@@ -95,9 +101,11 @@ export function weatherUi() {
         // max temperature
         const maxTemperature = document.createElement('p');
         maxTemperature.setAttribute('class', 'max-temperature');
+
+        const mapContainer = document.createElement('div');
+        mapContainer.setAttribute('class', 'map-container');
         
         //appends
-    
         main.append(weatherContainer);
         weatherContainer.append(cityContainer, descriptionContainer, dailyTemperatureContainer, humidityContainer);
     

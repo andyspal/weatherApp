@@ -4,7 +4,7 @@ async function fetchData(city) {
       const data = await response.json();
       return data;
     } catch(error) {
-      console.log(error.message());
+      console.log(error);
     }
   }
 
@@ -19,7 +19,7 @@ async function fetchData(city) {
     const description = data.weather[0].main;
     const timeCode = (data.weather[0].icon).slice(-1);
     const humidity = data.main.humidity;
-    
+
     return {name, currentTemperature, description, tempMin, tempMax, humidity, timeCode, status};
   }
   else if (status === 404 || status == 400){

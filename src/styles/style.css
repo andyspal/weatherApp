@@ -13,6 +13,9 @@ body{
     font-family: 'Glegoo', sans-serif;
     color: #F6F4EB;
     background-color: #0085d7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 header{
     display: flex;
@@ -64,10 +67,11 @@ main{
 
 .weather-container.success{
     display: grid;
-    grid-template-columns: repeat(2,minmax(10rem, 14rem))
+    grid-template-columns: repeat(2,minmax(10rem, 12rem));
+    align-self: baseline;
 }
 .weather-container{
-    max-width: 20rem;
+  
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: #FFFFFF;
 }
@@ -88,14 +92,19 @@ main{
 }
 
 .name{
-    /* text-transform: uppercase; */
+    text-transform: uppercase;
     text-align: center;
+    letter-spacing: .1rem;
 }
 .description-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.humidity-container,.description-container,.city-container,.daily-temperature-container{
+    padding: .5rem;
 }
 .description{
    flex: 1;
@@ -111,7 +120,7 @@ main{
     height: 50%;
 }
 .weather-icon{
-    width: 3.5rem;
+    width: 3rem;
 }
 
 
@@ -141,17 +150,32 @@ main{
     background-color: #000;
 }
 
+footer{
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding: 1rem;
+    flex: 1;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+a:hover{
+    cursor: pointer;
+    font-weight: 600;
+}
+a:active{
+    font-weight: 600;
+    color: rgb(232, 232, 232);
+}
 @media screen and (max-width: 600px) {
-    html{
-        font-size: 18px;
-    }
-
-    .weather-container{
-        max-width: 100%;
-
+    .weather-container.success{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
     }
     main{
-        display: flex;
-        width: 100%;
+        display: grid;
     }
   }
