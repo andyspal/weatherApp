@@ -1,6 +1,6 @@
 import searchIcon from './images/searchIcon.svg'
 
-export default function ui() {
+export function ui() {
 
     // Header
     const header = document.createElement("header");
@@ -14,8 +14,8 @@ export default function ui() {
     input.setAttribute('type', 'text');
     input.setAttribute('placeholder', 'Enter a city');
 
-    const errorMessage = document.createElement("p");
-    errorMessage.setAttribute('class', 'error-message');
+    const loaderContainer = document.createElement('div');
+    loaderContainer.setAttribute('class', 'loader-container');
 
     const button = document.createElement('button');
     button.setAttribute('type', 'submit');
@@ -24,58 +24,102 @@ export default function ui() {
     icon.setAttribute('class','search-icon');
     icon.setAttribute('alt','searchIcon')
     button.appendChild(icon);
-    form.append(button, input);
-    formContainer.append(form, errorMessage);
+    loaderContainer.appendChild(button)
+    form.append(loaderContainer, input);
+    formContainer.appendChild(form);
     header.appendChild(formContainer);
 
-    // Main
     const main = document.createElement('main');
-    //weather container
     const weatherContainer = document.createElement('div');
     weatherContainer.setAttribute('class', 'weather-container');
-    // weather: weather icon, current temperature, description
-    const weather = document.createElement('div');
-    weather.setAttribute('class', 'weather');
-    // temperatureContainer: maxTemp minTemp
-    const dailyTemperature = document.createElement('div');
-    dailyTemperature.setAttribute('class','daily-temperature');
-    
-    // detailedWeather: humidity, feelslike
-    const detailedWeather = document.createElement('div');
-    detailedWeather.setAttribute('class', 'detailed-weather');
-    // name
-    const name = document.createElement('h2');
-    name.setAttribute('class', 'name');
-    // weather icon
-    const weatherIcon = document.createElement('img');
-    weatherIcon.setAttribute('class', 'weather-icon')
-    // temperature
-    const currentTemperature = document.createElement('p');
-    currentTemperature.setAttribute('class', 'current-temperature');
-    // description
-    const description = document.createElement('p');
-    description.setAttribute('class', 'description');
-    // humidity
-    const humidity = document.createElement('p');
-    humidity.setAttribute('class', 'humidity');
-    // feels like
-    const feelsLike = document.createElement('p');
-    feelsLike.setAttribute('class', 'feels-like');
-    // max temperature
-    const maxTemperature = document.createElement('p');
-    maxTemperature.setAttribute('class', 'max-temperature');
-    // min temperature
-    const minTemperature = document.createElement('p');
-    minTemperature.setAttribute('class', 'min-temperature');
-    
-    //appends
-    main.append(name, weatherContainer);
-    weatherContainer.append(weather,dailyTemperature, detailedWeather);
-
-    weather.append(weatherIcon, currentTemperature, description);
-    dailyTemperature.append(maxTemperature, minTemperature);
-    detailedWeather.append(humidity, feelsLike);
+    main.appendChild(weatherContainer);
 
     // Append elements to Body
     document.body.append(header,main);
+
+    
+    
+}
+
+export function weatherUi() {
+        // Main
+        const main = document.querySelector('main');
+        //weather container
+        const weatherContainer = document.querySelector('.weather-container');
+        weatherContainer.classList.add('success');
+
+        // city container: name
+        const cityContainer = document.createElement('div');
+        cityContainer.setAttribute('class', 'city-container');
+        
+        // descriptionContainer: icon, temperature, description
+        const descriptionContainer = document.createElement('div');
+        descriptionContainer.setAttribute('class','description-container');
+        
+        // dailyTemperatureContainer: tempMin tempMax
+        const dailyTemperatureContainer = document.createElement('div');
+        dailyTemperatureContainer.setAttribute('class', 'daily-temperature-container');
+        
+        // humidityContainer: humidity
+        const humidityContainer = document.createElement('div');
+        humidityContainer.setAttribute('class','humidity-container');
+        
+        //city
+        const city = document.createElement('h2');
+        city.setAttribute('class', 'name');
+        // weather
+        const weather = document.createElement('div');
+        weather.setAttribute('class','weather');
+        // weather icon
+        const weatherIcon = document.createElement('img');
+        weatherIcon.setAttribute('class', 'weather-icon');
+        weatherIcon.setAttribute('alt', 'weather-icon');
+        // currentTemperature
+        const currentTemperature = document.createElement('p');
+        currentTemperature.setAttribute('class', 'current-temperature');
+        // description
+        const description = document.createElement('p');
+        description.setAttribute('class', 'description');
+        // humidity
+        const humidity = document.createElement('p');
+        humidity.setAttribute('class', 'humidity');
+
+        // min temperature
+        const minTemperature = document.createElement('p');
+        minTemperature.setAttribute('class', 'min-temperature');
+        
+        //slash
+        const slash = document.createElement('p')
+        slash.textContent = '/'
+        slash.setAttribute('class', 'slash');
+        // max temperature
+        const maxTemperature = document.createElement('p');
+        maxTemperature.setAttribute('class', 'max-temperature');
+        
+        //appends
+    
+        main.append(weatherContainer);
+        weatherContainer.append(cityContainer, descriptionContainer, dailyTemperatureContainer, humidityContainer);
+    
+        cityContainer.append(city);
+    
+        descriptionContainer.append(weather, description);
+        weather.append(weatherIcon, currentTemperature)
+    
+        dailyTemperatureContainer.append(minTemperature, slash, maxTemperature);
+        
+        humidityContainer.append(humidity);
+}
+
+export function errorUi(status){
+    const errorMessage = document.createElement('h2');
+    errorMessage.setAttribute('class','error-message');
+    if(status === "404" || status === "400"){
+        errorMessage.textContent = 'City not found, enter a valid name.'
+    }
+    else{
+        errorMessage.textContent = 'Something went wrong, contact support.'
+    }
+    
+    return errorMessage;
 }

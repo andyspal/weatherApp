@@ -1,26 +1,49 @@
-export function selectIconAndBackground(mainDescription, timeCode) {
+function selectIcon(mainDescription, timeCode) {
     switch (mainDescription) {
         case "Clear":
-            return timeCode === "d" ? { icon: "clear-day.svg", background: "clear-day-background.png" } : { icon: "clear-night.svg", background: "clear-night-background.png" };
+            return timeCode === "d" ? "clear-day.svg" : "clear-night.svg";
         case "Clouds":
-            return timeCode === "d" ? { icon: "clouds-day.svg", background: "clouds-day-background.png" } : { icon: "clouds-night.svg", background: "clouds-night-background.png" };
+            return timeCode === "d" ? "clouds-day.svg" : "clouds-night.svg";
         case "Rain":
-            return timeCode === "d" ? { icon: "rain-day.svg", background: "rain-day-background.png" } : { icon: "rain-night.svg", background: "rain-night-background.png" };
+            return timeCode === "d" ? "rain-day.svg" : "rain-night.svg";
         case "Drizzle":
-            return timeCode === "d" ? { icon: "drizzle-day.svg", background: "drizzle-day-background.png" } : { icon: "drizzle-night.svg", background: "drizzle-night-background.png" };
+            return timeCode === "d" ? "drizzle-day.svg" : "drizzle-night.svg";
         case "Thunderstorm":
-            return timeCode === "d" ? { icon: "thunderstorm-day.svg", background: "thunderstorm-day-background.png" } : { icon: "thunderstorm-night.svg", background: "thunderstorm-night-background.png" };
+            return timeCode === "d" ? "thunderstorm-day.svg" : "thunderstorm-night.svg";
         case "Snow":
-            return timeCode === "d" ? { icon: "snow-day.svg", background: "snow-day-background.png" } : { icon: "snow-night.svg", background: "snow-night-background.png" };
+            return timeCode === "d" ? "snow-day.svg" : "snow-night.svg";
         default:
-            return timeCode === "d" ? { icon: "default-day.svg", background: "default-day-background.png" } : { icon: "default-night.svg", background: "default-night-background.png" };
+            return timeCode === "d" ? "default-day.svg" : "default-night.svg";
     }
 }
 
-export async function loadIconAndBackground(iconName, backgroundName) {
-    const iconModule = await import(`./images/${iconName}.svg`);
-    const backgroundModule = await import(`./images/${backgroundName}.jpg`);
-    return { icon: iconModule.default, background: backgroundModule.default };
+async function loadIcon(iconName) {
+    let iconModule = await import(`./images/${iconName}`);
+    return  iconModule.default;
+}
+export async function updateWeather(name, currentTemperature, description, tempMin, tempMax, humidity, timeCode){
+    document.querySelector(".name").textContent = name;
+    document.querySelector('.current-temperature').textContent = `${currentTemperature}°`;
+    document.querySelector(".description").textContent = description;
+    document.querySelector(".min-temperature").textContent = `${tempMin}°`;
+    document.querySelector(".max-temperature").textContent = `${tempMax}°`;
+    document.querySelector(".humidity").textContent = `${humidity}%`;
+
+    if(timeCode === 'n'){
+        document.querySelector('.description-container').classList.add('night');
+        document.querySelector('.daily-temperature-container').classList.add('night');
+        document.querySelector('.city-container').classList.add('night');
+        document.querySelector('.humidity-container').classList.add('night');
+        document.body.style.backgroundColor = '#002f4c';
+    }
+    else{
+        document.body.style.backgroundColor = '#0085d7';
+    }
+    const icon = selectIcon(description, timeCode);
+    const loadedIcon = await loadIcon(icon);
+    document.querySelector('.weather-icon').src = `${loadedIcon}`;
+
+    
 }
 
-// const {icon, background} = await loadIcon("my-icon", "my-background");
+

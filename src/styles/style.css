@@ -1,15 +1,24 @@
+@font-face {
+    font-family: 'Glegoo';
+    src: url('../fonts/Glegoo-Regular.ttf') format('truetype'),
+         url('../fonts/Glegoo-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 html{
     font-size: 20px;
 }
 body{
-    background-color: #749BC2;
-    font-family: sans-serif;
+    font-family: 'Glegoo', sans-serif;
     color: #F6F4EB;
+    background-color: #0085d7;
 }
 header{
     display: flex;
-    justify-content: end;
-    padding: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 .form-container{
     display: flex;
@@ -20,9 +29,11 @@ form{
     display: flex;
     align-items: center;
     justify-items: center;
-
+    gap: .5rem;
 }
-
+.loader-container{
+    width: 2rem;
+}
 button{
     display: flex;
     background-color: transparent;
@@ -30,7 +41,7 @@ button{
     cursor: pointer;
 }
 button img{
-    width: 2rem;
+    width: 1.5rem;
 }
 
 input {
@@ -40,11 +51,107 @@ input {
     padding: .6rem;
     border-radius: 1rem;
 }
-
+main{
+    display: grid;
+    place-items: center;
+}
 .error-message{
-    color: red;
+    color: rgb(255, 0, 0);
     font-size: .9rem;
     text-align: center;
     padding: .5rem;
 }
 
+.weather-container.success{
+    display: grid;
+    grid-template-columns: repeat(2,minmax(10rem, 14rem))
+}
+.weather-container{
+    max-width: 20rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: #FFFFFF;
+}
+.city-container, .humidity-container{
+    display: grid;
+    place-items: center;
+    background-color: #00C2FF;
+}
+.name, 
+.description, 
+.current-temperature, 
+.min-temperature, 
+.max-temperature, 
+.humidity,
+.slash {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.name{
+    /* text-transform: uppercase; */
+    text-align: center;
+}
+.description-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.description{
+   flex: 1;
+   display: grid;
+   place-items: center;
+
+}
+.weather{
+    display: flex;
+    justify-content:center;
+    gap: 1rem;
+    align-items: center;
+    height: 50%;
+}
+.weather-icon{
+    width: 3.5rem;
+}
+
+
+.description-container,.daily-temperature-container{
+    background-color: #FFFFFF;
+    color: #00C2FF;
+}
+
+.description-container{
+    height: 10rem;
+}
+
+.daily-temperature-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.weather-container.night{
+    background-color: #000;
+}
+.city-container.night, .humidity-container.night{
+    color: #000;
+}
+.description-container.night,.daily-temperature-container.night{
+    background-color: #000;
+}
+
+@media screen and (max-width: 600px) {
+    html{
+        font-size: 18px;
+    }
+
+    .weather-container{
+        max-width: 100%;
+
+    }
+    main{
+        display: flex;
+        width: 100%;
+    }
+  }

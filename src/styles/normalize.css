@@ -42,7 +42,10 @@
     font-size: 2em;
     margin: 0.67em 0;
   }
-  
+  h2{
+    font-size: 1rem;
+    font-weight: normal;
+  }
   /* Grouping content
      ========================================================================== */
   

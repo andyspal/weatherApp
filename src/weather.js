@@ -10,24 +10,23 @@ async function fetchData(city) {
 
  export async function getData(city) {
   const data = await fetchData(city);
-  if(data.cod === 200){
-    const name = data.name;
-    const temperature = Math.round(data.main.temp - 273.15);
-    const tempMin = (data.main.temp_min - 273.15).toFixed(2);
-    const tempMax = (data.main.temp_max - 273.15).toFixed(2);
-    const mainDescription = data.weather[0].main;
-    const description = data.weather[0].description;
+  const status = data.cod;
+  if(status === 200){
+    const name = `${data.name}, ${data.sys.country}`;
+    const currentTemperature = Math.round(data.main.temp - 273.15);
+    const tempMin = Math.round(data.main.temp_min - 273.15);
+    const tempMax = Math.round(data.main.temp_max - 273.15);
+    const description = data.weather[0].main;
     const timeCode = (data.weather[0].icon).slice(-1);
-    console.log(timeCode);
     const humidity = data.main.humidity;
-
-    return {name, temperature, mainDescription, description, tempMin, tempMax, humidity, timeCode};
+    
+    return {name, currentTemperature, description, tempMin, tempMax, humidity, timeCode, status};
   }
-  else if (data.cod === 404){
-    return {error:'City not found'}
+  else if (status === 404 || status == 400){
+    return {status}
   }
   else{
-    return {error: data.message};
+    return {status};
   }
 }
 
